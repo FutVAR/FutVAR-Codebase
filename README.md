@@ -1,4 +1,4 @@
-![FutVAR](futvar.png)
+![FutVAR](futvar-bg.jpg)
 # FutVAR
 Football, a sport where every second has its significance, a sport where every centimeter and every second matter. That's why we decided to do a project on Football as a testing ground to push our object detection, image segmentation, keypoint detection, and foundational models to their limits. In the sports industry, precision and quick decision-making play a crucial role in determining success.
 
