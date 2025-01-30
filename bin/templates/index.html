@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FutVAR</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <img src="/static/assets/futvar.jpg" width="120px" height="120px">
+            <h1>FutVAR</h1>
+        </div>
+
+        <div class="video-input-section">
+            <label for="videoFileInput">Select Video File</label>
+            <input type="file" id="videoFileInput" accept="video/*">
+        </div>
+
+        <div class="model-selection-section">
+            <label for="modelSelect">Select Model</label>
+            <select id="modelSelect">
+                <option value="">Choose a Model</option>
+                <option value="playerDetection">Player Detection</option>
+                <option value="ballDetection">Ball Detection</option>
+                <option value="pitchDetection">Pitch Detection</option>
+                <option value="playerTracking">Player Tracking</option>
+                <option value="teamClassification">Team Classification</option>
+                <option value="radar">Radar</option>
+                <option value="voronoi">Voronoi</option>
+                <option value="ballTrack">Ball Track</option>
+                <option value="lineProjection">Line Projection</option>
+                <option value="cameraEstimator">Camera Estimator</option>
+                <option value="possession">Possession</option>
+                <option value="speedDistance">Speed & Distance</option>
+                <option value="heatMap">Heat Map</option>
+                <option value="segmentation">Segmentation</option>
+                <option value="action">Action</option>
+            </select>
+        </div>
+
+        <button id="inferenceButton" disabled>Run Inference</button>
+
+        <div id="resultsArea" class="hidden">
+            <h3>Results</h3>
+            <div id="videoResults" class="hidden">
+                <video id="processedVideoPlayer" width="100%" controls></video>
+            </div>
+            <pre id="resultsText"></pre> <div id="errorArea" class="hidden" style="color: red;"></div>
+        </div>
+    </div>
+
+    <script src="static/app.js"></script>
+</body>
+</html>

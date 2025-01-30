@@ -1,0 +1,130 @@
+:root {
+    --primary-color: #000000;
+    --secondary-color: #000000;
+    --background-light: #f8fafc;
+    --text-dark: #1f2937;
+    --border-color: #e5e7eb;
+    --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-top: 30px;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+
+.video-input-section,
+.model-selection-section {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.container .content
+{
+    display: flex;
+    justify-content: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+input[type="file"],
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background-color: #fff;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="file"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+button {
+    width: 100%;
+    padding: 0.875rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--box-shadow);
+}
+
+button:hover:not(:disabled) {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+button:disabled {
+    background-color: #000000;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+#resultsArea {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f1f5f9;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    text-align: left;
+}
+
+#resultsText {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+.hidden {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FutVar - Video Inference</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <style>
+        .drop-zone {
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .drop-zone.hover {
+            border-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FutVar</h1>
+
+        <div class="video-input-section">
+            <label for="videoFileInput">Select Video File</label>
+            <input type="file" id="videoFileInput" accept="video/*" style="display:none;">
+            <div class="drop-zone" id="dropZone">Drag and drop a video file here or click to select</div>
+        </div>
+
+        <div class="model-selection-section">
+            <label for="modelSelect">Select Model</label>
+            <select id="modelSelect">
+                <!-- Options remain unchanged -->
+            </select>
+        </div>
+
+        <button id="inferenceButton" disabled>Run Inference</button>
+
+        <div id="resultsArea" class="hidden">
+            <h3>Results</h3>
+            <div id="videoResults" class="hidden">
+                <video id="processedVideoPlayer" width="100%" controls></video>
+            </div>
+            <pre id="resultsText"></pre> 
+            <div id="errorArea" class="hidden" style="color: red;"></div>
+        </div>
+    </div>
+
+    <script src="static/app.js"></script>
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const videoFileInput = document.getElementById('videoFileInput');
+
+        // Prevent default drag behaviors
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+
+        // Highlight drop zone when item is dragged over it
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.add('hover'), false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.remove('hover'), false);
+        });
+
+        // Handle dropped files
+        dropZone.addEventListener('drop', handleDrop, false);
+        
+        // Click event to open file dialog
+        dropZone.addEventListener('click', () => videoFileInput.click());
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+
+            handleFiles(files);
+        }
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                videoFileInput.files = files; // Set the input file to the dropped files
+                // Optionally, you can also display the video preview here
+                console.log(files[0]); // For debugging purposes
+                document.getElementById('inferenceButton').disabled = false; // Enable button if a file is selected
+            }
+        }
+    </script>
+</body>
+</html>
